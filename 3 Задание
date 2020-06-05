@@ -1,0 +1,14 @@
+def offset_array(array, offset):
+    dupe = array.copy() # Copy of original array, all the data is taken from here
+    clamp = len(dupe) # Restrict array values, escaping IndexError
+    for i in range(len(dupe)): # Iterating through each possible index
+        array[(i)] = dupe[(i - offset) % clamp] # Set element of array to change to accroding eleemnt in offset
+ 
+if __name__ == '__main__':
+    inp = input('(array) <<< ')
+    offset = int(input('(offset)<<< '))
+    array = list(inp)
+    offset_array(array, offset)
+    print(array)
+    
+    
