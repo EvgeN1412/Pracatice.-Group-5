@@ -1,0 +1,54 @@
+from flask import Flask, request, make_response, jsonify
+import sqlite3
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return 'Hello, world!'
+
+
+### INSERT ###
+@app.route('/api/add', methods=['POST'])
+def add_animal():
+    # STUB: That's an echo method
+    callback = dict()
+    for arg in request.args:
+        callback.update({arg: request.args[arg]})
+    return jsonify(callback)
+
+
+### DELETE ###
+@app.route('/api/remove/<id>', methods=['POST'])
+def remove_animal(id):
+    # STUB: That's an echo method
+    return str(id)
+
+
+### UPDATE ###
+@app.route('/api/edit/<id>', methods=['POST'])
+def edit_animal():
+    # STUB: That's an echo method
+    callback = dict()
+    for arg in request.args:
+        callback.update({arg: request.args[arg]})
+    return jsonify(callback)
+
+
+### SELECT * ###
+@app.route('/api/get/all', methods=['GET'])
+def get_all():
+    return '<code>Here all the thing lies</code>'
+
+
+### SELECT ###
+@app.route('/api/get/<id>', methods=['GET'])
+def get_animal(id):
+    # STUB: That's an echo method
+    return str(id) if id is not all else get_all()
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
